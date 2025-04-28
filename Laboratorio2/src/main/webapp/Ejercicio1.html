@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section class="card">
+    <div class="title">
+        <h1 class="title">Ejercicio 1</h1>
+    </div>
+    <form class="form" action="Ejercicio1.jsp" method="post">
+        <div class="form_control">
+            <label for="nombre">Ingrese su nombre</label>
+            <input type="text" placeholder="Coloque el nombre" name="nombre">
+        </div>
+        <br>
+        <label for="colegio">Seleccione el tipo de colegio</label>
+        <div class="form_control">
+            <input type="radio" name ="colegio" value="Nacional">
+            <label for="Nacional">Nacional</label>
+        </div>
+        <div class="form_control">
+            <input type="radio" name="colegio" value="Particular">
+            <label for="Particular">Particular</label>
+        </div>
+        <br>
+        <div class="form_control">
+            <label for="categoria">Seleccione su categoría</label>
+            <select name="categoria">
+                <option value="A">[ SELECCIONE ]</option>
+                <option value="A">Categoría A</option>
+                <option value="B">Categoría B</option>
+                <option value="C">Categoría C</option>
+            </select>
+        </div>
+        <br>
+        <div class="form_control">
+            <label for="pension">Coloque la pension que esta pagando</label>
+            <input type="number" name="pension" placeholder="Coloque la pension">
+        </div>
+        <br>
+        <hr>
+        <div class="form_buttons">
+            <button type="reset" value="Limpiar">Limpiar</button>
+            <button type="submit" value="Enviar">Enviar</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

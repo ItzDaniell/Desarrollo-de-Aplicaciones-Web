@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div>
+        <h1>Ejercicio 2</h1>
+    </div>
+    <form class="form" action="Ejercicio2" method="post">
+        <div>
+            <label for="nombre">Coloque su nombre</label>
+            <input type="text" name="nombre" placeholder="Coloque su nombre" required>
+        </div>
+        <br>
+        <div>
+            <label for="estado">Estado Civil</label>
+            <select name="estado">
+                <option value="">[SELECCIONE]</option>
+                <option value="Casado">Casado</option>
+                <option value="Viudo">Viudo</option>
+                <option value="Soltero">Soltero</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="hijos">Coloque la cantidad de hijos</label>
+            <input type="number" name="hijos" value="0" required>
+        </div>
+        <br>
+        <div>
+            <label for="sueldo">Coloque su sueldo</label>
+            <input type="number" name="sueldo" value="0" required min="0">
+        </div>
+        <br>
+        <hr>
+        <div>
+            <button type="reset" value="Limpiar">Limpiar</button>
+            <button type="submit" value="Enviar">Enviar</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section>
+  <div>
+    <h1>Ejercicio 3</h1>
+  </div>
+  <form class="form" action="Ejercicio3" method="post">
+    <div>
+      <label for="nombre">Coloque su nombre</label>
+      <input type="text" name="nombre" placeholder="Coloque su nombre" required>
+    </div>
+    <br>
+    <div>
+      <label for="cantidad">Coloque la cantidad de prendas que confeccionó</label>
+      <input type="number" name="cantidad" placeholder="Coloque la cantidad" required>
+    </div>
+    <br>
+    <div>
+      <label for="prenda">Seleccione el tipo de prenda que confecciona</label>
+      <select name="prenda">
+        <option value=""> [ SELECCIONE ]</option>
+        <option value="polo">Polo</option>
+        <option value="camisa">Camisa</option>
+        <option value="pantalon">Pantalon</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <label for="categoria">Seleccione a que categoria pertenece</label>
+      <select name="categoria">
+        <option value=""> [ SELECCIONE ]</option>
+        <option value="A">Categoría A</option>
+        <option value="B">Categoría B</option>
+        <option value="C">Categoría C</option>
+        <option value="D">Categoría D</option>
+      </select>
+    </div>
+    <br>
+    <hr>
+    <div>
+      <button type="reset" value="Limpiar">Limpiar</button>
+      <button type="submit" value="Enviar">Enviar</button>
+    </div>
+  </form>
+</section>
+</body>
+</html>

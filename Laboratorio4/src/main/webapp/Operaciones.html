@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operaciones Matemáticas</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <form action="operaciones" method="post">
+        <label>Coloque el número 1</label>
+        <input type="number" name="num1" required><br><br>
+        <label>Coloque el número 2</label>
+        <input type="number" name="num2" required><br><br>
+        <label>Operaciones</label>
+        <select name="op">
+            <option value="">[[ SELECCIONE ]]</option>
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplicacion">Multiplicacion</option>
+            <option value="division">Division</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

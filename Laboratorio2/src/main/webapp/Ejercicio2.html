@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Title</title>
+</head>
+<body>
+<section class="card">
+    <div class="title">
+        <h1 class="title">Ejercicio 2</h1>
+    </div>
+    <form class="form" action="Ejercicio2.jsp" method="post">
+        <div class="form_control">
+            <label for="nombre">Coloque su nombre</label>
+            <input type="text" name="nombre" placeholder="Coloque su nombre" required>
+        </div>
+        <br>
+        <div class="form_control">
+            <label for="estado">Estado Civil</label>
+            <select name="estado">
+                <option value="">[SELECCIONE]</option>
+                <option value="Casado">Casado</option>
+                <option value="Viudo">Viudo</option>
+                <option value="Soltero">Soltero</option>
+            </select>
+        </div>
+        <br>
+        <div class="form_control">
+            <label for="hijos">Coloque la cantidad de hijos</label>
+            <input type="number" name="hijos" value="0" required>
+        </div>
+        <br>
+        <div class="form_control">
+            <label for="sueldo">Coloque su sueldo</label>
+            <input type="number" name="sueldo" value="0" required min="0">
+        </div>
+        <br>
+        <hr>
+        <div class="form_buttons">
+          <button type="reset" value="Limpiar">Limpiar</button>
+          <button type="submit" value="Enviar">Enviar</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>
