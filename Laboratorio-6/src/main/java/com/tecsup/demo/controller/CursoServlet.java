@@ -80,9 +80,9 @@ public class CursoServlet extends HttpServlet {
     }
 
     private void insertarCurso(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String codigo = request.getParameter("codigo");
-        String nombre = request.getParameter("nombre");
-        int creditos = Integer.parseInt(request.getParameter("creditos"));
+        String codigo = request.getParameter("txtCodigo");
+        String nombre = request.getParameter("txtNombre");
+        int creditos = Integer.parseInt(request.getParameter("txtCreditos"));
 
         Curso curso = new Curso();
         curso.setCodigo(codigo);

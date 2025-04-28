@@ -10,7 +10,6 @@
 <body>
 <%
     List<Curso> listaCursos = (List<Curso>) request.getAttribute("listaCursos");
-
     if (listaCursos != null && !listaCursos.isEmpty()) {
 %>
 <div class="container" style="margin-top: 70px;">
@@ -20,7 +19,7 @@
         <h1>Mantenimiento de Cursos</h1>
         <div style="padding: 10px;">
             <button class="btn btn-danger">
-                <a class="nav-link  link-light" aria-current="page" href="cursoInsertar.jsp">Nuevo Curso</a>
+                <a class="nav-link  link-light" aria-current="page" href="agregar.jsp">Nuevo Curso</a>
             </button>
         </div>
 
