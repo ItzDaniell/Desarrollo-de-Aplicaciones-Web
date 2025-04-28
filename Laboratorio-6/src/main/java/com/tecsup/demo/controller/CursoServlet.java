@@ -76,10 +76,10 @@ public class CursoServlet extends HttpServlet {
     }
 
     private void buscarCurso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String codigo = request.getParameter("codigo");
-        Curso curso = cursoDAO.buscarPorCodigo(codigo);
-        request.setAttribute("curso", curso);
-        request.getRequestDispatcher("/editar.jsp").forward(request, response);
+        String nombre = request.getParameter("txtNombre"); // Obtener el parámetro de búsqueda por nombre
+        List<Curso> listaCursos = cursoDAO.buscarPorNombre(nombre); // Buscar cursos por nombre
+        request.setAttribute("listaCursos", listaCursos); // Pasar la lista de cursos encontrados
+        request.getRequestDispatcher("/listar.jsp").forward(request, response); // Redirigir a la vista de resultados
     }
 
     private void insertarCurso(HttpServletRequest request, HttpServletResponse response) throws IOException {

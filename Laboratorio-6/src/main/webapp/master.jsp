@@ -30,9 +30,10 @@
                 </li>
             </ul>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Búsqueda</button>
+            <form class="d-flex" action="cController" method="get" role="search">
+                <input class="form-control me-2" type="search" name="txtNombre" placeholder="Buscar por nombre" aria-label="Search">
+                <input name="action" type="hidden" value="buscar"/>
+                <button class="btn btn-outline-light"  type="submit">Búsqueda</button>
             </form>
         </div>
     </div>

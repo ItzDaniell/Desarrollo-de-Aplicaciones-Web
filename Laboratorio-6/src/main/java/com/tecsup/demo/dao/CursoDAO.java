@@ -70,7 +70,7 @@ public class CursoDAO {
         return false;
     }
     public Curso buscarPorCodigo(String codigo) {
-        String sql = "SELECT * FROM Curso WHERE chrCurCodigo = ?";
+        String sql = "SELECT * FROM curso WHERE chrCurCodigo = ?";
         Curso curso = null;
         try (Connection conn = conectar();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -86,5 +86,25 @@ public class CursoDAO {
             e.printStackTrace();
         }
         return curso;
+    }
+
+    public List<Curso> buscarPorNombre(String nombre) {
+        String sql = "SELECT * FROM curso WHERE vchCurNombre LIKE ?";
+        List<Curso> cursos = new ArrayList<>();
+        try (Connection conn = conectar();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + nombre + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Curso curso = new Curso();
+                curso.setCodigo(rs.getString("chrCurCodigo"));
+                curso.setNombre(rs.getString("vchCurNombre"));
+                curso.setCreditos(rs.getInt("intCurCreditos"));
+                cursos.add(curso);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cursos;
     }
 }
