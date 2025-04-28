@@ -33,6 +33,9 @@ public class CursoServlet extends HttpServlet {
             case "buscar":
                 buscarCurso(request, response);
                 break;
+            case "mostrarFormularioActualizar":
+                mostrarFormularioActualizar(request, response);
+                break;
             default:
                 listarCursos(request, response);
                 break;
@@ -108,5 +111,17 @@ public class CursoServlet extends HttpServlet {
         String codigo = request.getParameter("codigo");
         cursoDAO.eliminar(codigo);
         response.sendRedirect("cController?action=listar");
+    }
+
+    private void mostrarFormularioActualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String codigo = request.getParameter("id");
+        Curso curso = cursoDAO.buscarPorCodigo(codigo);
+
+        if (curso != null) {
+            request.setAttribute("curso", curso);
+            request.getRequestDispatcher("/editar.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("cController?action=listar");
+        }
     }
 }

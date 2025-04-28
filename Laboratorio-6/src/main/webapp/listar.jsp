@@ -47,7 +47,7 @@
                         <i class="fa-solid fa-trash"></i> Borrar
                     </a>
                     <!-- Botón de actualizar -->
-                    <a class="btn btn-danger" href="cursoActualizar.jsp?id=<%= curso.getCodigo() %>">
+                    <a class="btn btn-danger" href="cController?action=mostrarFormularioActualizar&id=<%= curso.getCodigo() %>">
                         <i class="fa-solid fa-pencil"></i> Actualizar
                     </a>
                 </td>
