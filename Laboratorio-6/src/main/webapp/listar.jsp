@@ -42,7 +42,7 @@
                 <td><%= curso.getCreditos() %></td>
                 <td>
                     <!-- Botón de eliminar -->
-                    <a class="btn btn-warning" href="cursoEliminar.jsp?id=<%= curso.getCodigo() %>">
+                    <a class="btn btn-warning" href="cController?action=mostrarFormularioEliminar&id=<%= curso.getCodigo() %>">
                         <i class="fa-solid fa-trash"></i> Borrar
                     </a>
                     <!-- Botón de actualizar -->

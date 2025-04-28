@@ -36,6 +36,9 @@ public class CursoServlet extends HttpServlet {
             case "mostrarFormularioActualizar":
                 mostrarFormularioActualizar(request, response);
                 break;
+            case "mostrarFormularioEliminar":
+                mostrarFormularioEliminar(request, response);
+                break;
             default:
                 listarCursos(request, response);
                 break;
@@ -108,7 +111,7 @@ public class CursoServlet extends HttpServlet {
     }
 
     private void eliminarCurso(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String codigo = request.getParameter("codigo");
+        String codigo = request.getParameter("txtCodigo");
         cursoDAO.eliminar(codigo);
         response.sendRedirect("cController?action=listar");
     }
@@ -116,10 +119,19 @@ public class CursoServlet extends HttpServlet {
     private void mostrarFormularioActualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String codigo = request.getParameter("id");
         Curso curso = cursoDAO.buscarPorCodigo(codigo);
-
         if (curso != null) {
             request.setAttribute("curso", curso);
             request.getRequestDispatcher("/editar.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("cController?action=listar");
+        }
+    }
+    private void mostrarFormularioEliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String codigo = request.getParameter("id");
+        Curso curso = cursoDAO.buscarPorCodigo(codigo);
+        if (curso != null) {
+            request.setAttribute("curso", curso);
+            request.getRequestDispatcher("/eliminar.jsp").forward(request, response);
         } else {
             response.sendRedirect("cController?action=listar");
         }
