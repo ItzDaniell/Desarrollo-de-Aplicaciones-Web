@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d671b9-e02f-4826-8de4-45c2e6c59fdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Laboratorio-6/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laboratorio-6/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laboratorio-6/src/main/webapp/cursoMan.jsp" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Laboratorio7/src/main/java/com/tecsup/demo/model/Categoria.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ItzDaniell"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ItzDaniell&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ItzDaniell/Desarrollo-de-Aplicaciones-Web.git",
-    "accountId": "3f748ab4-689b-4c07-b3f0-29e043e55526"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ItzDaniell/Desarrollo-de-Aplicaciones-Web.git&quot;,
+    &quot;accountId&quot;: &quot;3f748ab4-689b-4c07-b3f0-29e043e55526&quot;
   }
-}]]></component>
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -71,6 +70,7 @@
   "keyToString": {
     "Application.CursoDao.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "Tomcat Server.Tomcat 10.1.39.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -221,6 +221,7 @@
       <workItem from="1745446776331" duration="1692000" />
       <workItem from="1745796484698" duration="6519000" />
       <workItem from="1745806092835" duration="1022000" />
+      <workItem from="1746500227728" duration="324000" />
     </task>
     <servers />
   </component>
