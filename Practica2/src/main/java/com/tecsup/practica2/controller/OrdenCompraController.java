@@ -41,6 +41,7 @@ public class OrdenCompraController {
         }
 
         OrdenCompra orden = new OrdenCompra();
+        orden.setNroOrdenC(request.getNroOrdenC());
         orden.setFechaEmision(LocalDate.parse(request.getFechaEmision()));
         orden.setSituacion(request.getSituacion());
         orden.setTotal(request.getTotal());
@@ -72,14 +73,22 @@ public class OrdenCompraController {
     public void eliminar(@PathVariable Long id) {
         ordenCompraService.eliminar(id);
     }
-    
+
     public static class OrdenCompraRequest {
+        private Long nroOrdenC;
         private String fechaEmision;
         private String situacion;
         private double total;
         private String nroFacturaProv;
         private Long laboratorioId;
 
+        public Long getNroOrdenC() {
+            return nroOrdenC;
+        }
+
+        public void setNroOrdenC(Long nroOrdenC) {
+            this.nroOrdenC = nroOrdenC;
+        }
         public String getFechaEmision() {
             return fechaEmision;
         }
