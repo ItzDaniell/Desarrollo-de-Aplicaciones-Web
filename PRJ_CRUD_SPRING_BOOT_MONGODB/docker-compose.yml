@@ -7,4 +7,4 @@ services:
     ports:
       - "8087:8087"
     environment:
-      SPRING_DATA_MONGODB_URI: ${SPRING_DATA_MONGODB_URI}
+      SPRING_DATA_MONGODB_URI: mongodb+srv://ItzDaniell:ItzDaniel8048@desarrolloaplicacionesw.lvmzepb.mongodb.net/Escuela?retryWrites=true&w=majority&appName=DesarrolloAplicacionesWeb
