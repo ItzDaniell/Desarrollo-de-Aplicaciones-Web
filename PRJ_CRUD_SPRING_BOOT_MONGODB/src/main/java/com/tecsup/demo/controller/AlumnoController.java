@@ -27,7 +27,7 @@ public class AlumnoController {
     public String listar(Model model) {
         model.addAttribute("titulo", "Listado de Alumnos");
         model.addAttribute("alumnos", servicio.listar());
-        return "listarView";
+        return "listarViewAlumno";
     }
 
     @RequestMapping(value = "/buscarAlumno/{id}", method = RequestMethod.GET)
@@ -43,32 +43,31 @@ public class AlumnoController {
         Alumno alumno = new Alumno();
         model.put("alumno", alumno);
         model.put("titulo", "Formulario de Alumno");
-        return "formView";
+        return "formViewAlumno";
     }
 
-    @RequestMapping(value = "/formCurso/{id}")
+    @RequestMapping(value = "/formAlumno/{id}")
     public String editar(@PathVariable(value = "id") String id, Map<String, Object> model) {
 
-        Curso curso = null;
+        Alumno alumno = null;
 
         if (id!=null && id.length()>0) {
-            curso = servicio.buscar(id);
+            alumno = servicio.buscar(id);
         } else {
-            return "redirect:/listarCurso";
+            return "redirect:/listarAlumno";
         }
-        model.put("curso", curso);
-        model.put("titulo", "Editar Curso");
-        return "formView";
+        model.put("alumno", alumno);
+        model.put("titulo", "Editar Alumno");
+        return "formViewAlumno";
     }
 
-    @RequestMapping(value = "/formCurso", method = RequestMethod.POST)
-    public String guardar(@Valid Curso curso, BindingResult result, Model model, SessionStatus status) {
+    @RequestMapping(value = "/formAlumno", method = RequestMethod.POST)
+    public String guardar(@Valid Alumno alumno, BindingResult result, Model model, SessionStatus status) {
         if (result.hasErrors()) {
-            model.addAttribute("titulo", "Formulario de Curso");
-            return "formView";
+            model.addAttribute("titulo", "Formulario de Alumno");
+            return "formViewAlumno";
         }
-        //System.out.println(curso);
-        servicio.grabar(curso);
+        servicio.grabar(alumno);
         status.setComplete();
         return "redirect:/listarAlumno";
     }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${titulo}">Lista de Alumnos</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Spring Boot</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Inicio
+                <span class="sr-only">(current)</span>
+            </a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/listarCurso}">Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/listarAlumno}">Alumno</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+        th:text="${titulo}">Listado de Alumnos</h1>
+    <p><a th:href="@{/formAlumno}" class="btn btn-success btn-xs">Crear Alumno</a></p>
+    <table class="table table-striped">
+        <thead class="bg-dark text-white">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Género</th>
+            <th>Email</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="alumno : ${alumnos}">
+            <td th:text="${alumno.id}">ID</td>
+            <td th:text="${alumno.nombre}">Nombre</td>
+            <td th:text="${alumno.apellido}">Apellido</td>
+            <td th:text="${alumno.fechaNacimiento}">Fecha</td>
+            <td th:text="${alumno.genero}">Género</td>
+            <td th:text="${alumno.email}">Email</td>
+            <td><a class="btn btn-primary btn-xs" th:href="@{/formAlumno/} + ${alumno.id}">Editar</a></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{/eliminarAlumno/} + ${alumno.id}"
+                   onclick="return confirm('¿Estás seguro que quieres eliminar este alumno?');">Eliminar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
