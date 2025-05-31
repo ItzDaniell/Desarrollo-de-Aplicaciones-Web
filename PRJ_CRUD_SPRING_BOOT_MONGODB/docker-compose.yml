@@ -5,6 +5,6 @@ services:
     build: .
     container_name: springboot-app
     ports:
-      - "8080:8080"
+      - "8087:8087"
     environment:
       SPRING_DATA_MONGODB_URI: ${SPRING_DATA_MONGODB_URI}
