@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: spring-boot-h2
+    env: java
+    plan: free
+    buildCommand: ./mvn clean install # o mvn clean install
+    startCommand: java -jar build/libs/tu-app.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+    disk:
+      name: h2-disk
+      mountPath: /data
+      sizeGB: 1
