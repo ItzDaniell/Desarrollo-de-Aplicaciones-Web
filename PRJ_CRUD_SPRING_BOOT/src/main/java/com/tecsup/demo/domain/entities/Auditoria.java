@@ -12,7 +12,7 @@ public class Auditoria {
     @Column(name = "id")
     private Integer id;
     private String tabla;
-    @Column(name = "id_registro`")
+    @Column(name = "id_registro")
     private Integer idRegistro;
     private Date fecha;
     private String usuario;
