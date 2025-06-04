@@ -3,7 +3,7 @@ package com.tecsup.demo.aop;
 import com.tecsup.demo.domain.entities.Alumno;
 import com.tecsup.demo.domain.entities.Auditoria;
 import com.tecsup.demo.domain.entities.Curso;
-import com.tecsup.demo.domain.persistence.AuditoríaDao;
+import com.tecsup.demo.domain.persistence.AuditoriaDao;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -24,7 +24,7 @@ public class LogginAspecto {
     private Long tx;
 
     @Autowired
-    private AuditoríaDao auditoriaDao;
+    private AuditoriaDao auditoriaDao;
 
     @Around("execution(* com.tecsup.demo.services.*ServiceImpl.*(..))")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -73,7 +73,7 @@ public class LogginAspecto {
 
             String usuario = "usuario"; // Puedes integrar Spring Security para obtener el usuario real
 
-            logger.info("📝 [Auditoría] Tabla: {}, ID: {}, Acción: {}", nombreEntidad, id, metodo);
+            logger.info("[Auditoria] Tabla: {}, ID: {}, Accion: {}", nombreEntidad, id, metodo);
 
             auditoriaDao.save(new Auditoria(
                     nombreEntidad,
