@@ -24,7 +24,7 @@
             <label class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
                 <input type="text" th:field="*{nombre}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" />
+                       th:errorclass="'form-control alert-danger'" required/>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <label class="col-sm-2 col-form-label">Apellido</label>
             <div class="col-sm-6">
                 <input type="text" th:field="*{apellido}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" />
+                       th:errorclass="'form-control alert-danger'" required/>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
             </div>
         </div>
@@ -44,8 +44,8 @@
             <label class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
             <div class="col-sm-6">
                 <input type="date" th:field="*{fechaNacimiento}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" />
-                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></small>
+                       th:errorclass="'form-control alert-danger'" required/>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" th:required=""></small>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
             <label class="col-sm-2 col-form-label">Género</label>
             <div class="col-sm-6">
                 <select th:field="*{genero}" class="form-control"
-                        th:errorclass="'form-control alert-danger'">
+                        th:errorclass="'form-control alert-danger'" required>
                     <option value="">Seleccione</option>
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
@@ -68,7 +68,7 @@
             <label class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-6">
                 <input type="email" th:field="*{email}" class="form-control"
-                       th:errorclass="'form-control alert-danger'" />
+                       th:errorclass="'form-control alert-danger'" required/>
                 <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
             </div>
         </div>
