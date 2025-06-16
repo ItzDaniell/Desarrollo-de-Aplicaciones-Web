@@ -10,29 +10,36 @@ import java.util.List;
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
     @Autowired
-    private AlumnoRepository dao;
+    private AlumnoRepository alumnoRepository;
 
     @Override
     @Transactional(readOnly = false)
     public void grabar(Alumno alumno) {
-        dao.save(alumno);
+        alumnoRepository.save(alumno);
     }
 
     @Override
     @Transactional(readOnly = false)
     public void eliminar(Integer id) {
-        dao.deleteById(id);
+        alumnoRepository.deleteById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Alumno buscar(Integer id) {
-        return dao.findById(id).orElse(null);
+        return alumnoRepository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Alumno> listar() {
-        return (List<Alumno>)dao.findAll();
+        return (List<Alumno>)alumnoRepository.findAll();
+    }
+
+    @Transactional
+    public void eliminarAlumno(int id) {
+        Alumno alumno = alumnoRepository.findById(id).orElseThrow();
+        alumnoRepository.delete(alumno); // Estado: Removed
+        // El alumno será eliminado al hacer commit
     }
 }
