@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <h1 class="text-secondary border-bottom border-success mb-4" th:text="#{text.curso.titulo}">Mantenimiento de Cursos</h1>
+
+    <!-- Alertas de validación -->
+    <div th:object="${curso}" th:remove="tag">
+        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Formulario -->
+    <form th:action="@{/form}" th:object="${curso}" method="post">
+        <div class="mb-3 row">
+            <label for="nombre" class="col-sm-2 col-form-label" th:text="#{text.form.nombre}">Nombre</label>
+            <div class="col-sm-6">
+                <input id="nombre" type="text" th:field="*{nombre}" class="form-control"
+                       th:errorclass="is-invalid"/>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="creditos" class="col-sm-2 col-form-label" th:text="#{text.form.creditos}">Créditos</label>
+            <div class="col-sm-6">
+                <input id="creditos" type="text" th:field="*{creditos}" class="form-control"
+                       th:errorclass="is-invalid"/>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('creditos')}" th:errors="*{creditos}"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 offset-sm-2">
+                <button type="submit" class="btn btn-primary" th:text="#{text.boton.crear}">Crear Curso</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

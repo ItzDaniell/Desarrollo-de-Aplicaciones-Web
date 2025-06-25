@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <!-- Título principal -->
+    <h1 class="text-secondary border-bottom border-success mb-4"
+        th:text="#{text.curso.titulo}">Mantenimiento de Cursos</h1>
+
+    <!-- Botón para crear curso -->
+    <p>
+        <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/form}"
+           class="btn btn-success" th:text="#{text.boton.crear}">Crear Curso</a>
+    </p>
+
+    <!-- Tabla de cursos -->
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th th:text="#{text.form.nombre}">Nombre</th>
+            <th th:text="#{text.form.creditos}">Créditos</th>
+            <th>
+                <div class="d-flex justify-content-end gap-2">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger btn-sm"
+                       th:href="@{/ver(format='pdf')}">PDF</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success btn-sm"
+                       th:href="@{/ver(format='xlsx')}">XLS</a>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+            <td th:text="${curso.id}">1</td>
+            <td th:text="${curso.nombre}">Nombre del curso</td>
+            <td th:text="${curso.creditos}">4</td>
+            <td>
+                <div class="d-flex gap-2">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-sm"
+                       th:href="@{/form/{id}(id=${curso.id})}"
+                       th:text="#{text.boton.editar}">Editar</a>
+
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger btn-sm"
+                       th:href="@{/eliminar/{id}(id=${curso.id})}"
+                       th:text="#{text.boton.eliminar}"
+                       onclick="return confirm('¿Estás seguro que quieres eliminar?');">Eliminar</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

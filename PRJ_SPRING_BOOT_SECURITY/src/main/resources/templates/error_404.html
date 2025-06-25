@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+
+    <div class="card bg-danger text-white">
+        <div class="card-header">
+            <h4 th:text="#{text.security.error.403.prohibited}" th:class="#{text.security.error.403.prohibited}">Acceso Prohibido</h4>
+        </div>
+        <div class="card-body">
+            <p class="card-title">
+                <span th:text="#{text.security.error.403.permissions}"></span>
+                <a th:href="@{/login}" class="btn btn-outline-light btn-sm ml-3">Ir al Login</a>
+            </p>
+            <hr>
+            <a class="btn btn-secondary" th:text="#{text.security.error.403.volver}" th:href="@{'/'}"></a>
+        </div>
+    </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
