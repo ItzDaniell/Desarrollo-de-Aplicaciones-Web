@@ -8,6 +8,7 @@ import ProductosPage from './pages/ProductosPage';
 import ProductoFormPage from './pages/ProductoFormPage';
 import UnauthorizedPage from './pages/UnauthorizedPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { ROLES, ROUTES } from './utils/constants';
 
 function App() {
   return (
@@ -24,27 +25,29 @@ function App() {
               {/* Ruta de login */}
               <Route path="/login" element={<LoginPage />} />
               
-              {/* Rutas protegidas */}
-              <Route path="/productos" element={
+              {/* Rutas protegidas - tanto CLIENTES como DUENOS pueden ver productos */}
+              <Route path={ROUTES.PRODUCTOS} element={
                 <ProtectedRoute>
                   <ProductosPage />
                 </ProtectedRoute>
               } />
               
-              <Route path="/productos/crear" element={
-                <ProtectedRoute requiredRole="DUENO">
+              {/* Rutas protegidas para DUENOS - pueden crear productos */}
+              <Route path={ROUTES.PRODUCTO_CREAR} element={
+                <ProtectedRoute requiredRole={ROLES.DUENO}>
                   <ProductoFormPage />
                 </ProtectedRoute>
               } />
               
-              <Route path="/productos/editar/:id" element={
-                <ProtectedRoute requiredRole="DUENO">
+              {/* Rutas protegidas para DUENOS - pueden editar productos */}
+              <Route path={`${ROUTES.PRODUCTO_EDITAR}/:id`} element={
+                <ProtectedRoute requiredRole={ROLES.DUENO}>
                   <ProductoFormPage />
                 </ProtectedRoute>
               } />
               
               {/* Ruta de acceso no autorizado */}
-              <Route path="/unauthorized" element={<UnauthorizedPage />} />
+              <Route path={ROUTES.UNAUTHORIZED} element={<UnauthorizedPage />} />
               
               {/* Redirección por defecto */}
               <Route path="*" element={<Navigate to="/" replace />} />

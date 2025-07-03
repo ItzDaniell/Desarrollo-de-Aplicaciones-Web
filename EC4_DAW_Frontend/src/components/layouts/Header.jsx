@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import styles from '../../styles/layouts/Header.module.css';
+import { ROLES, ROLE_DISPLAY_NAMES, ROLE_BADGE_COLORS, ROLE_ICONS, ROUTES } from '../../utils/constants';
 
 const Header = () => {
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated, isOwner, isClient } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -12,25 +12,29 @@ const Header = () => {
   };
 
   const getRoleBadgeColor = (role) => {
-    return role === 'DUENO' ? 'success' : 'info';
+    return ROLE_BADGE_COLORS[role] || 'secondary';
   };
 
   const getRoleIcon = (role) => {
-    return role === 'DUENO' ? 'bi-shield-check' : 'bi-person';
+    return ROLE_ICONS[role] || 'bi-person';
+  };
+
+  const getRoleDisplayName = (role) => {
+    return ROLE_DISPLAY_NAMES[role] || 'Usuario';
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg border-0 shadow-sm ${styles.header}`}>
-      <div className={`container ${styles.headerContainer}`}>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm border-bottom">
+      <div className="container">
         {/* Logo y marca */}
-        <Link className={`navbar-brand d-flex align-items-center fw-bold text-white ${styles.brand}`} to="/">
-          <i className={`bi bi-shield-lock fs-3 me-2 ${styles.brandIcon}`}></i>
-          <span className={`fs-4 ${styles.brandText}`}>ProductManager</span>
+        <Link className="navbar-brand d-flex align-items-center fw-bold text-dark" to="/">
+          <i className="bi bi-box-seam text-primary fs-3 me-2"></i>
+          <span className="fs-4">ProductManager</span>
         </Link>
 
         {/* Botón hamburguesa */}
         <button
-          className={`navbar-toggler border-0 ${styles.toggler}`}
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -38,20 +42,34 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className={`navbar-toggler-icon ${styles.togglerIcon}`}></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Menú de navegación */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className={`navbar-nav me-auto ${styles.navList}`}>
+          <ul className="navbar-nav me-auto">
+            {/* Enlace de productos - visible para todos los usuarios autenticados */}
             {isAuthenticated() && (
               <li className="nav-item">
                 <Link 
-                  className={`nav-link text-white fw-medium ${styles.navLink}`}
+                  className="nav-link text-dark fw-medium"
                   to="/productos"
                 >
-                  <i className={`bi bi-box me-2 ${styles.navIcon}`}></i>
+                  <i className="bi bi-box me-2"></i>
                   Productos
+                </Link>
+              </li>
+            )}
+            
+            {/* Enlace de crear producto - solo para dueños */}
+            {isAuthenticated() && isOwner() && (
+              <li className="nav-item">
+                <Link 
+                  className="nav-link text-dark fw-medium"
+                  to={ROUTES.PRODUCTO_CREAR}
+                >
+                  <i className="bi bi-plus-circle me-2"></i>
+                  Crear Producto
                 </Link>
               </li>
             )}
@@ -59,62 +77,62 @@ const Header = () => {
 
           {/* Información del usuario y logout */}
           {isAuthenticated() && user && (
-            <div className={`navbar-nav ms-auto ${styles.nav}`}>
-              <div className={`nav-item dropdown ${styles.userDropdown}`}>
+            <div className="navbar-nav ms-auto">
+              <div className="nav-item dropdown">
                 <a
-                  className={`nav-link dropdown-toggle d-flex align-items-center text-white fw-medium ${styles.userButton}`}
+                  className="nav-link dropdown-toggle d-flex align-items-center text-dark fw-medium"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <div className={`d-flex align-items-center ${styles.userInfo}`}>
+                  <div className="d-flex align-items-center">
                     <div className="me-3">
-                      <i className={`bi ${getRoleIcon(user.role)} fs-5 ${styles.userIcon}`}></i>
+                      <i className={`bi ${getRoleIcon(user.role)} fs-5 text-primary`}></i>
                     </div>
-                    <div className={`text-start ${styles.userDetails}`}>
-                      <div className={`fw-semibold ${styles.userName}`}>{user.username}</div>
-                      <div className="small opacity-75">
-                        <span className={`badge bg-${getRoleBadgeColor(user.role)} rounded-pill ${styles.roleBadge} ${styles[`roleBadge${user.role}`]}`}>
-                          {user.role}
+                    <div className="text-start">
+                      <div className="fw-semibold">{user.username}</div>
+                      <div className="small text-muted">
+                        <span className={`badge bg-${getRoleBadgeColor(user.role)} rounded-pill`}>
+                          {getRoleDisplayName(user.role)}
                         </span>
                       </div>
                     </div>
                   </div>
                 </a>
                 
-                <ul className={`dropdown-menu dropdown-menu-end border-0 shadow-lg ${styles.dropdownMenu}`}>
+                <ul className="dropdown-menu dropdown-menu-end shadow border-0">
                   <li>
-                    <div className={`dropdown-header fw-bold text-dark px-3 py-2 ${styles.dropdownHeader}`}>
-                      <i className="bi bi-person-circle me-2"></i>
+                    <div className="dropdown-header fw-bold text-dark px-3 py-2">
+                      <i className="bi bi-person-circle me-2 text-primary"></i>
                       Perfil de Usuario
                     </div>
                   </li>
-                  <li><hr className={`dropdown-divider ${styles.dropdownDivider}`} /></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li>
-                    <div className={`px-3 py-2 ${styles.userInfoItem}`}>
-                      <div className={`small text-muted mb-1 ${styles.userInfoLabel}`}>Usuario:</div>
-                      <div className={`fw-semibold text-dark ${styles.userInfoValue}`}>{user.username}</div>
+                    <div className="px-3 py-2">
+                      <div className="small text-muted mb-1">Usuario:</div>
+                      <div className="fw-semibold text-dark">{user.username}</div>
                     </div>
                   </li>
                   <li>
-                    <div className={`px-3 py-2 ${styles.userInfoItem}`}>
-                      <div className={`small text-muted mb-1 ${styles.userInfoLabel}`}>Rol:</div>
+                    <div className="px-3 py-2">
+                      <div className="small text-muted mb-1">Rol:</div>
                       <div>
-                        <span className={`badge bg-${getRoleBadgeColor(user.role)} rounded-pill ${styles.roleBadge} ${styles[`roleBadge${user.role}`]}`}>
+                        <span className={`badge bg-${getRoleBadgeColor(user.role)} rounded-pill`}>
                           <i className={`bi ${getRoleIcon(user.role)} me-1`}></i>
-                          {user.role}
+                          {getRoleDisplayName(user.role)}
                         </span>
                       </div>
                     </div>
                   </li>
-                  <li><hr className={`dropdown-divider ${styles.dropdownDivider}`} /></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li>
                     <button
-                      className={`dropdown-item d-flex align-items-center fw-medium ${styles.dropdownItem}`}
+                      className="dropdown-item d-flex align-items-center fw-medium text-danger"
                       onClick={handleLogout}
                     >
-                      <i className={`bi bi-box-arrow-right me-2 text-danger ${styles.dropdownItemIcon}`}></i>
+                      <i className="bi bi-box-arrow-right me-2"></i>
                       Cerrar Sesión
                     </button>
                   </li>
